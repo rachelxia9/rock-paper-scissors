@@ -1,4 +1,7 @@
 
+let playerScore = 0; 
+let compScore = 0; 
+
 function getComputerChoice() {
     let choices = ["Rock", "Paper", "Scissors"];
 
@@ -14,9 +17,12 @@ function playRound(playerSelection, computerSelection) {
     if (playerChoice == computerSelection) {
             return "It's a tie";
     } else if (isPlayerWin(playerChoice, computerSelection)) {
+            playerScore ++; 
             return "You Win! " + playerChoice + " beats " + computerSelection;
     } else {
+        compScore ++; 
         return "You Lose! " + computerSelection + " beats " + playerChoice;
+        
     }
 }
 
@@ -27,10 +33,18 @@ function isPlayerWin(playerSelection, computerSelection) {
 }
 
 function game() {
-    
+    let score = "";
     for (i = 0; i < 5; i++) {
         let playerSelection = prompt("Choose Rock, Paper or Scissors");
         let result = playRound(playerSelection, getComputerChoice());
-        console.log(result);
-    }
+        alert(result);
+        score = printResults();
+        document.getElementById("result").innerText=score;
+    } 
+    
 }
+
+function printResults(){
+    return "You: " + playerScore + " | Computer: " + compScore;
+}
+
