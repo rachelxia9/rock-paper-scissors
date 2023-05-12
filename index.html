@@ -1,19 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+
 </head>
 
 
 <body>
     <h1 class="title">Let's Play Rock, Paper, Scissors!</h1>
-    <button id="play" onclick="game();">Click to play!</button>
-    <p id="result"></p>
+    <div id="top-container">
+        <div id= "result-container">
+            <h3 id="resultMessage"></h3>
+            <p id="roundMessage"></p>
+        </div>
+        <div id="sign-score-container">
+            <div class="display-container">
+                <div id="playerScore"></div>
+                <div id="playerDisplay"></div>
+            </div>
+            <div class="display-container">
+                <div id="compScore"></div>
+                <div id="compDisplay"></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="button-container">
+        <button id="rockButton">ROCK</button>
+        <button id="paperButton">PAPER</button>
+        <button id="scissorsButton">SCISSORS</button>
+    </div>
+    
+
+    <div id="endScreen">
+        <p>Game Over</p>
+        <button id="restart">Restart Game</button>
+    </div>
+
+    <div id="overlay"></div>
+
+
+
 
     <script src="script.js"></script>
 </body>
+
 </html>
