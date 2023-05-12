@@ -1,3 +1,56 @@
 *{
     font-family: Roboto, sans-serif;
+    background-color: #9094d6; 
+    color: white; 
+}
+
+.title{
+    display: flex;
+    align-content: center; 
+    justify-content: space-around;
+    
+}
+
+#title-con{
+    
+    
+    padding: 20px; 
+    padding-top: 15px; 
+    padding-bottom: 15px; 
+    border-radius: 10px;
+}
+
+#top-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    justify-content: center;
+    font-size: 24px;
+}
+
+
+#result-container{
+  text-align: center;
+  margin: 20px; 
+}
+
+#sign-score-container {
+    margin: 20px; 
+}
+
+.button-container {
+    margin: 20px; 
+    display: flex; 
+    justify-content: space-between; 
+}
+
+#rockButton, #paperButton, #scissorsButton {
+    padding: 10px; 
+    width: 150px; 
+    height: 150px; 
+    margin: 20px;
+    background-color:whitesmoke;
+    border-radius: 20px;
+    border:none;
+    font-size: 40px;
 }

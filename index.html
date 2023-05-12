@@ -12,12 +12,19 @@
 
 
 <body>
-    <h1 class="title">Let's Play Rock, Paper, Scissors!</h1>
-    <div id="top-container">
-        <div id= "result-container">
-            <h3 id="resultMessage"></h3>
-            <p id="roundMessage"></p>
+    <div class="title">
+        <div id="title-con">
+            <h1>Let's Play Rock, Paper, Scissors!</h1>
         </div>
+    </div>
+    
+    <div id="top-container">
+        <div class="button-container">
+            <button id="rockButton">✊</button>
+            <button id="paperButton">🫲</button>
+            <button id="scissorsButton">✌️</button>
+        </div>
+
         <div id="sign-score-container">
             <div class="display-container">
                 <div id="playerScore"></div>
@@ -27,14 +34,16 @@
                 <div id="compScore"></div>
                 <div id="compDisplay"></div>
             </div>
+            
+        </div>
+
+        <div id= "result-container">
+            <h3 id="resultMessage"></h3>
+            <p id="roundMessage"></p>
         </div>
 
     </div>
-    <div class="button-container">
-        <button id="rockButton">ROCK</button>
-        <button id="paperButton">PAPER</button>
-        <button id="scissorsButton">SCISSORS</button>
-    </div>
+    
     
 
     <div id="endScreen">
