@@ -1,6 +1,7 @@
 
 let playerScore = 0; 
 let compScore = 0; 
+let winner = "";
 
 function getComputerChoice() {
     let choices = ["Rock", "Paper", "Scissors"];
@@ -15,13 +16,13 @@ function playRound(playerSelection, computerSelection) {
     playerChoice = playerChoice[0].toUpperCase() + playerChoice.substr(1); 
 
     if (playerChoice == computerSelection) {
-            return "It's a tie";
+            winner = "tie";
     } else if (isPlayerWin(playerChoice, computerSelection)) {
             playerScore ++; 
-            return "You Win! " + playerChoice + " beats " + computerSelection;
+            winner = "player";
     } else {
         compScore ++; 
-        return "You Lose! " + computerSelection + " beats " + playerChoice;
+        winner = "computer";
         
     }
 }
@@ -32,19 +33,118 @@ function isPlayerWin(playerSelection, computerSelection) {
     (playerSelection == "Scissors" && computerSelection == "Paper") 
 }
 
-function game() {
-    let score = "";
-    for (i = 0; i < 5; i++) {
-        let playerSelection = prompt("Choose Rock, Paper or Scissors");
-        let result = playRound(playerSelection, getComputerChoice());
-        alert(result);
-        score = printResults();
-        document.getElementById("result").innerText=score;
-    } 
+const resultMessage = document.getElementById('resultMessage'); 
+const playerScoreText =  document.getElementById('playerScore'); 
+const compScoreText =  document.getElementById('compScore');
+const roundMessage =  document.getElementById('roundMessage');
+const rockButton = document.getElementById('rockButton');
+const scissorsButton = document.getElementById('scissorsButton');
+const paperButton = document.getElementById('paperButton');
+const playerDisplay = document.getElementById('playerDisplay');
+const compDisplay = document.getElementById('compDisplay');
+const endScreen = document.getElementById('endScreen'); 
+const overlay = document.getElementById('overlay');
+const restartButton = document.getElementById('restart')
+
+rockButton.addEventListener('click', () => handleClick("Rock"));
+paperButton.addEventListener('click', () => handleClick("Paper"));
+scissorsButton.addEventListener('click', () => handleClick("Scissors"));
+restartButton.addEventListener('click', restartGame); 
+overlay.addEventListener('click', removeEnd);
+
+function updateScore() {
+    if (winner == "tie") {
+        resultMessage.textContext = "You tied."
+    } else if (winner == "player") {
+        resultMessage.textContent = "You won"
+    } else {
+        resultMessage.textContent = "You lost"
+    }
+
+    playerScoreText.textContent = 'Player: ' + playerScore; 
+    compScoreText.textContent = 'Computer: ' + compScore; 
+
+
+}
+
+function updateRoundMessage(winner, playerSelection, computerSelection) {
+    if (winner == "tie") {
+        roundMessage.textContext = `${playerSelection} ties with ${computerSelection}`;
+    } else if (winner == "player") {
+        roundMessage.textContent = `${playerSelection} beats ${computerSelection}`;
+    } else {
+        roundMessage.textContent = `${playerSelection} is beaten by ${computerSelection}`;
+    }
+}
+
+function handleClick(playerSelection){
+    if (isGameOver()) {
+        showEnd();
+        return
+    }
+    const computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
+    updateSelections(playerSelection, computerSelection);
+    updateScore(); 
+    updateRoundMessage(winner, playerSelection, computerSelection); 
+}
+
+function isGameOver() {
+    return (playerScore >= 5) || (compScore >= 5);
+}
+
+function updateSelections(playerSelection, computerSelection){
+    switch(playerSelection){
+        case "Rock": 
+            playerSelection = "✊"
+            break
+        case "Paper": 
+            playerSelection = "🫲"
+            break
+        case "Scissors": 
+            playerSelection = "✌️"
+            break
+    }
+
+    switch(computerSelection){
+        case "Rock": 
+            computerSelection = "✊"
+            break
+        case "Paper": 
+            computerSelection = "🫲"
+            break
+        case "Scissors": 
+            computerSelection = "✌️"
+            break
+    }
+
+    playerDisplay.textContent = playerSelection;
+    compDisplay.textContent = computerSelection;
+
+}
+
+
+function showEnd() {
+    endScreen.classList.add('active');
+    overlay.classList.add('active'); 
+}
+
+function removeEnd() {
+    endScreen.classList.remove('active');
+    overlay.classList.remove('active'); 
+}
+
+function restartGame() {
+    playerScore = 0; 
+    compScore = 0; 
+    computerSelection = ""; 
+    playerSelection = "";
+    playerDisplay.textContent = ""; 
+    compDisplay.textContent = "";
+    roundMessage.textContent = "";
+    winner = "";
+    
+    updateScore(); 
+    resultMessage.textContent = "";
     
 }
-
-function printResults(){
-    return "You: " + playerScore + " | Computer: " + compScore;
-}
-
