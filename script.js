@@ -45,6 +45,8 @@ const compDisplay = document.getElementById('compDisplay');
 const endScreen = document.getElementById('endScreen'); 
 const overlay = document.getElementById('overlay');
 const restartButton = document.getElementById('restart')
+const playerScoreText2 =  document.getElementById('playerScore2'); 
+const compScoreText2 =  document.getElementById('compScore2');
 
 rockButton.addEventListener('click', () => handleClick("Rock"));
 paperButton.addEventListener('click', () => handleClick("Paper"));
@@ -125,13 +127,19 @@ function updateSelections(playerSelection, computerSelection){
 
 
 function showEnd() {
+    playerScoreText2.textContent = 'Player: ' + playerScore; 
+    compScoreText2.textContent = 'Computer: ' + compScore; 
     endScreen.classList.add('active');
     overlay.classList.add('active'); 
+    playerScoreText2.classList.add('active');
+    compScoreText2.classList.add('active');
 }
 
 function removeEnd() {
     endScreen.classList.remove('active');
     overlay.classList.remove('active'); 
+    playerScoreText2.classList.remove('active');
+    compScoreText2.classList.remove('active');
 }
 
 function restartGame() {
@@ -146,5 +154,7 @@ function restartGame() {
     
     updateScore(); 
     resultMessage.textContent = "";
+
+    removeEnd();
     
 }

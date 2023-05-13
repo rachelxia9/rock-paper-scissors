@@ -1,5 +1,5 @@
 *{
-    font-family: Roboto, sans-serif;
+    font-family: 'Inter';
     background-color: #9094d6; 
     color: white; 
 }
@@ -13,7 +13,7 @@
 
 #title-con{
     
-    
+    font-weight: bold;
     padding: 20px; 
     padding-top: 15px; 
     padding-bottom: 15px; 
@@ -53,4 +53,62 @@
     border-radius: 20px;
     border:none;
     font-size: 40px;
+}
+
+#endScreen {
+    opacity: 0%;
+    position: absolute; 
+    left: 50%;
+    padding: 30px;
+    text-align:center; 
+    top: 50%;
+    background-color:darkslateblue;
+    font-size: 40px;
+    transform: translate(-50%, -50%);
+    padding-left: 80px; 
+    padding-right: 80px; 
+    border-radius: 20px
+}
+
+#endScreen.active {
+    opacity: 100%;
+}
+
+#restart {
+    padding: 20px; 
+    font-size: 24px;
+    border-radius: 20px; 
+    border: none;
+}
+
+#game-over {
+    background-color: darkslateblue;
+    font-weight: bolder;
+}
+
+#overlay {
+    width: 100%; 
+    height: 100%; 
+    opacity: 0%; 
+    background-color: black;
+}
+
+#overlay.active {
+    opacity: 40%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#playerScore2 {
+    font-size: 18px;
+
+    background-color: darkslateblue;
+}
+
+#compScore2 {
+    font-size: 18px;
+    margin-bottom: 30px;
+    background-color: darkslateblue;
+
 }
